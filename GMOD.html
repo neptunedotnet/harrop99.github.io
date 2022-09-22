@@ -1,0 +1,79 @@
+
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var titleBar = document.createElement('div');
+titleBar.style.backgroundColor = '#ccc';
+titleBar.style.padding = '10px';
+titleBar.style.fontSize = '20px';
+titleBar.innerHTML = 'Garrys Mod Hello';
+document.body.appendChild(titleBar);
+
+titleBar.style.backgroundColor = '#00f';
+
+titleBar.style.color = '#fff';
+titleBar.style.fontWeight = 'bold';
+
+var time = document.createElement('div');
+time.style.float = 'right';
+time.style.fontSize = '17px';
+time.style.padding = '10px';
+time.innerHTML = new Date().toLocaleTimeString();
+titleBar.appendChild(time);
+
+setInterval(function() {
+  time.innerHTML = new Date().toLocaleTimeString();
+}, 1000);
+
+document.body.style.backgroundImage = 'url(https://i.kym-cdn.com/entries/icons/original/000/036/517/1384072719_preview_20180512155054_1.jpg)';
+
+var taskBar = document.createElement('div');
+taskBar.style.backgroundColor = '#ccc';
+taskBar.style.position = 'fixed';
+taskBar.style.bottom = '0';
+taskBar.style.left = '0';
+taskBar.style.right = '0';
+taskBar.style.height = '40px';
+document.body.appendChild(taskBar);
+
+taskBar.style.border = '5px solid #000';
+
+var taskBarText = document.createElement('div');
+taskBarText.style.padding = '10px';
+taskBarText.style.fontSize = '20px';
+taskBarText.innerHTML = 'File Open Quit';
+taskBar.appendChild(taskBarText);
+
+taskBarText.style.fontWeight = 'bold';
+
+var blackBox = document.createElement('div');
+blackBox.style.backgroundColor = '#000';
+blackBox.style.position = 'fixed';
+blackBox.style.top = '50%';
+blackBox.style.left = '0%';
+blackBox.style.width = '3000px';
+blackBox.style.height = '200px';
+blackBox.style.marginLeft = '-100px';
+blackBox.style.marginTop = '-100px';
+document.body.appendChild(blackBox);
+
+blackBox.style.opacity = '0.75';
+
+var shortBox = document.createElement('div');
+shortBox.style.backgroundColor = '#000';
+shortBox.style.position = 'fixed';
+shortBox.style.top = '71%';
+shortBox.style.left = '0%';
+shortBox.style.width = '3000px';
+shortBox.style.height = '50px';
+shortBox.style.marginLeft = '-100px';
+shortBox.style.marginTop = '-50px';
+document.body.appendChild(shortBox);
+
+shortBox.style.opacity = '0.5';
+});
+        </script
+    </body>
+</html>
