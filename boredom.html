@@ -1,0 +1,54 @@
+
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var videos = [
+'https://www.youtube.com/embed/videoseries?list=PL3tRBEVW0hiDASYbDpMYOzbuWlg18O7Wa',
+  'https://www.youtube.com/embed/videoseries?list=PLJG_yEXr2dztY4prRioJ_mjCrrvdV2olz',
+  'https://www.youtube.com/embed/videoseries?list=PLv0k4pV5hufyr2uI6P5pDSNJfg05vdxCo',
+  'https://www.youtube.com/embed/videoseries?list=PLHy7G7ndrUmpWqBkNKjJRT5urGiPW63Iq',
+  'https://www.youtube.com/embed/videoseries?list=PLbpl-gZkNl2A_UbL03nGuVuO_ci4jDsw4'
+ ]
+
+var video = document.createElement('iframe');
+video.src = 'https://www.youtube.com/embed/jNQXAC9IVRw';
+video.width = '720';
+video.height = '720';
+video.frameborder = '0';
+video.allowfullscreen = 'true';
+document.body.appendChild(video);
+
+var up = document.createElement('button');
+up.innerHTML = '&#8681; NEXT';
+up.onclick = function() {};
+document.body.appendChild(up);
+
+up.onclick = function() {
+  var randomVideo = videos[Math.floor(Math.random() * videos.length)];
+  video.src = randomVideo;
+};
+
+up.style.position = 'fixed';
+up.style.bottom = '0';
+up.style.left = '50%';
+up.style.transform = 'translateX(-50%)';
+
+up.style.fontSize = '2em';
+
+up.style.backgroundColor = 'aqua';
+
+up.style.color = 'white';
+
+up.style.width = '150%';
+
+video.style.position = 'fixed';
+video.style.top = '0';
+video.style.left = '0';
+video.style.width = '100%';
+video.style.height = '100%';
+});
+        </script>
+    </head>
+</html>
