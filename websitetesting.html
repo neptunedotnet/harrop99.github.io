@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>xpvm.net</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+    <style>
+      body {
+        background-image: url("http://images6.fanpop.com/image/photos/40200000/Windows-XP-Desktop-Transparent-1-nintendofan12s-fun-stuff-40247176-1366-768.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
+        background-size: cover;
+      }
+      .window {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 665px;
+        height: 417px;
+      }
+    </style>
+  </head>
+  <body>
+  <script src="script.js"></script>
+    <div class="window" style="width: 400px">
+      <div class="title-bar">
+        <div class="title-bar-text">Welcome to xpvm.net</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <menu role="tablist">
+          <button aria-selected="true" aria-controls="home">Home</button>
+          <button aria-selected="false" aria-controls="thearchive">The Archive</button>
+          <button aria-selected="false" aria-controls="abouthiswebsite">About this website</button>
+        </menu>
+        <article role="tabpanel" id="home">
+		 <p><b>Welcome to XPVM.net! this is the homepage.</b></p>
+		 <p>Popular</p>
+          <a href="xpvm.net/eagler"><button class="button">Eaglercraft</button></a>
+          <br>
+          <button class="button">GMOD tool gun</button>
+		  <p><b><i>News</i></b></p>
+		  <p>━━━━━━</p>
+		  <p><b>21/12/22</b></p>
+		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
+        </article>
+		
+        <article role="tabpanel" hidden id="thearchive">
+		<!-- tab content goes here -->
+		<p>hi</p>
+       <a href="https://github.com/harrop99/xpvm.net-archive/raw/main/Fallout%204%20Map.png"><button class="button">Fallout 4 Map</button>
+        </article>
+		
+		
+        <article role="tabpanel" hidden id="abouthiswebsite">
+		<!-- tab content goes here -->
+         <p>testing</p>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
