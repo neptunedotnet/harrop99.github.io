@@ -20,15 +20,33 @@
   </head>
   
 <body>
-<!-- HTML for the icon -->
-<img src="icon.png" alt="xpvm.net - my website" style="width: 70px; height: 70px;" draggable="true">
+<!-- HTML for the icon and the blue square -->
+<img src="icon.png" alt="My Icon" class="icon" style="cursor: grab;">
+<div class="square"></div>
 
+<!-- CSS to style the icon and the blue square -->
+<style>
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
 
+  .square {
+    position: absolute;
+    top: 0;
+    left: -10;
+    width: 5%;
+    height: 7%;
+    background-color: blue;
+    opacity: 0.25;
+    display: none;  /* hide the square initially */
+  }
+</style>
 
-<!-- JavaScript to handle the dragging -->
+<!-- JavaScript to make the icon draggable and update the position of the blue square -->
 <script>
-  const icon = document.querySelector('img');
-
+  const icon = document.querySelector('.icon');
+  const square = document.querySelector('.square');
   let isDragging = false;
   let currentX;
   let currentY;
@@ -40,6 +58,15 @@
   icon.addEventListener("mousedown", dragStart);
   icon.addEventListener("mouseup", dragEnd);
   icon.addEventListener("mousemove", drag);
+  icon.addEventListener('click', function() {
+    square.style.display = 'block';  // show the square
+  });
+
+  document.body.addEventListener('click', function(event) {
+    if (event.target !== icon) {  // check that the user didn't click the icon again
+      square.style.display = 'none';  // hide the square
+    }
+  });
 
   function dragStart(e) {
     initialX = e.clientX - xOffset;
@@ -67,6 +94,7 @@
       yOffset = currentY;
 
       setTranslate(currentX, currentY, icon);
+      setTranslate(currentX, currentY, square);  // update the position of the square
     }
   }
 
@@ -74,6 +102,7 @@
     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
   }
 </script>
+
   <script src="script.js"></script>
     <div class="window" style="width: 600px">
       <div class="title-bar">
