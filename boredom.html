@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <script>
@@ -11,7 +10,7 @@ var videos = [
   'https://www.youtube.com/embed/videoseries?list=PLUR-PCZCUv7ScfWhazLLdEWJ3UehPl_8M',
   'https://www.youtube.com/embed/videoseries?list=PLUR-PCZCUv7RtD9DsWJ4o6QgdOVgJATAA',
   'https://www.youtube.com/embed/videoseries?list=PLU2851hDb3SEbbc0Zx5KTD6-heWGGaKrb',
-  'https://www.youtube.com/embed/videoseries?list=UULFDwMh0pu1iSXeKx7qmqjIQA',
+  'https://www.youtube.com/embed/UULFDwMh0pu1iSXeKx7qmqjIQA',
   'https://www.youtube.com/embed/zkkTrTkuiuE',
   'https://www.youtube.com/embed/videoseries?list=PLuEQ5BB-Z1PJpQeD_APn7N2sBNMoK-iYg',
   'https://www.youtube.com/embed/Otk4HJAx_9M',
@@ -36,6 +35,7 @@ up.innerHTML = '&#8681; NEXT';
 up.onclick = function() {};
 document.body.appendChild(up);
 
+// Modify the onclick event handler to select a random video from the playlist and set the src attribute of the iframe to the URL of the selected video
 up.onclick = function() {
   var randomVideo = videos[Math.floor(Math.random() * videos.length)];
   video.src = randomVideo;
