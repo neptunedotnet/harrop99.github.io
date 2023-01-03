@@ -133,7 +133,7 @@
         // Set the view count based on the length of the title
         let viewCount = 0;
         if (videoTitle.value.length > 20) {
-               viewCount = Math.floor(Math.random() * 24) + 1024;
+               viewCount = Math.floor(Math.random() * 1000) + 1000;
         } else {
           viewCount = Math.floor(Math.random() * 24) + 10;
         }
@@ -161,10 +161,10 @@ if (subscriberCount >= 10 && subscriberCount < 100) {
 } else if (subscriberCount >= 100 && subscriberCount < 1000) {
   averageViews += Math.floor(subscriberCount / 100);
 } else if (subscriberCount >= 1000) {
-  averageViews += 5;
+  averageViews += 100;
 }
 
-averageViews += 2 * subscriberCount;
+averageViews += 4 * subscriberCount;
 
       });
       
