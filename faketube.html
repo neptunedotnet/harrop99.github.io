@@ -1,0 +1,215 @@
+ <style>
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+      
+.controls button {
+  margin: 10 10px;
+  color: white;
+  background-color: red;
+  border: none;
+  height: 35px;
+  width: 150px;
+ cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.controls button:active {
+  background-color: darkred;
+}
+
+.controls button:focus {
+  outline: none;
+}
+
+      
+      .controls input {
+        width: 200px;
+        margin: 0 10px;
+      }
+      
+      .video-title {
+        margin: 10px;
+		  font-family: 'Roboto', sans-serif;
+      }
+      
+      .view-count {
+        margin: 0 10px;
+		  font-family: 'Roboto', sans-serif;
+      }
+      
+      .subscriber-count {
+        margin: 0 10px;
+		  font-family: 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+  <img src="faketubelogo.png" alt="FakeTube logo" id="logo">
+    <div class="controls">
+      <button id="screen-share-button">Start Rec</button>
+      <button id="stop-recording-button" style="display: none;">Stop Rec</button>
+      <button id="upload-button" style="display: none;">Upload</button>
+      <button id="download-button" style="display: none;">Download</button>
+      <input type="text" id="video-title" placeholder="Enter video title">
+    </div>
+    <video id="recorded-video" width="640" height="360" style="display: none;"></video>
+    <h1 class="video-title" style="display: none;"></h1>
+    <div class="view-count" style="display: none;"></div>
+    <div class="subscriber-count" style="display: none;"></div>
+    
+    <script>
+      let mediaRecorder;
+      let recordedBlob;
+      
+      let subscriberCount = 0;
+      let averageViews = 10;
+      
+      const screenShareButton = document.getElementById('screen-share-button');
+      const stopRecordingButton = document.getElementById('stop-recording-button');
+      const uploadButton = document.getElementById('upload-button');
+      const downloadButton = document.getElementById('download-button');
+      const recordedVideo = document.getElementById('recorded-video');
+      const videoTitle = document.getElementById('video-title');
+      const videoTitleElement = document.querySelector('.video-title');
+      const viewCountElement = document.querySelector('.view-count');
+      const subscriberCountElement = document.querySelector('.subscriber-count');
+      
+      screenShareButton.addEventListener('click', () => {
+        videoTitle.value = '';
+        videoTitleElement.innerText = '';
+        videoTitleElement.style.display = 'none';
+        viewCountElement.innerText = '';
+        viewCountElement.style.display = 'none';
+        subscriberCountElement.innerText = '';
+        subscriberCountElement.style.display = 'none';
+        recordedVideo.src = '';
+        recordedVideo.controls = false;
+        recordedVideo.style.display = 'none';
+        uploadButton.style.display = 'none';
+        downloadButton.style.display = 'none';
+                if (!navigator.getDisplayMedia && !navigator.mediaDevices.getDisplayMedia) {
+          console.error('This browser does not support screen sharing.');
+          return;
+        }
+        
+        if (navigator.getDisplayMedia) {
+          navigator.getDisplayMedia({ video: true }).then(handleSuccess).catch(handleError);
+        } else {
+          navigator.mediaDevices.getDisplayMedia({ video: true }).then(handleSuccess).catch(handleError);
+        }
+      });
+      
+      stopRecordingButton.addEventListener('click', () => {
+        mediaRecorder.stop();
+        screenShareButton.style.display = 'inline';
+        stopRecordingButton.style.display = 'none';
+        uploadButton.style.display = 'inline';
+        downloadButton.style.display = 'inline';
+      });
+      
+      uploadButton.addEventListener('click', () => {
+        if (videoTitle.value === '') {
+          alert('Please enter a title for the video.');
+          return;
+        }
+        
+        uploadButton.style.display = 'none';
+        downloadButton.style.display = 'none';
+        recordedVideo.style.display = 'inline';
+        
+        recordedVideo.src = URL.createObjectURL(recordedBlob);
+        recordedVideo.controls = true;
+        recordedVideo.autoplay = true;
+        
+        videoTitleElement.innerText = videoTitle.value;
+        videoTitleElement.style.display = 'block';
+        
+        // Set the view count based on the length of the title
+        let viewCount = 0;
+        if (videoTitle.value.length > 20) {
+               viewCount = Math.floor(Math.random() * 24) + 1024;
+        } else {
+          viewCount = Math.floor(Math.random() * 24) + 10;
+        }
+        
+        viewCountElement.innerText = `${viewCount} Views`;
+        viewCountElement.style.display = 'block';
+        
+        // Increase the subscriber count based on the number of views
+        if (viewCount >= 1000 && viewCount < 10000) {
+          subscriberCount += Math.floor(viewCount / 1000);
+        } else if (viewCount >= 10000 && viewCount < 100000) {
+          subscriberCount += Math.floor(viewCount / 10000);
+        } else if (viewCount >= 100000) {
+          subscriberCount += 10;
+        }
+        
+        subscriberCountElement.innerText = `${subscriberCount} Subscribers`;
+        subscriberCountElement.style.display = 'block';
+        
+        let averageViews = 10;
+
+// Increase the average views per video based on the number of subscribers
+if (subscriberCount >= 10 && subscriberCount < 100) {
+  averageViews += Math.floor(subscriberCount / 10);
+} else if (subscriberCount >= 100 && subscriberCount < 1000) {
+  averageViews += Math.floor(subscriberCount / 100);
+} else if (subscriberCount >= 1000) {
+  averageViews += 5;
+}
+
+averageViews += 2 * subscriberCount;
+
+      });
+      
+      downloadButton.addEventListener('click', () => {
+        if (videoTitle.value === '') {
+          alert('Please enter a title for the video.');
+          return;
+        }
+        
+        const url = URL.createObjectURL(recordedBlob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `${videoTitle.value}.mp4`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        }, 100);
+      });
+      
+      function handleSuccess(stream) {
+        screenShareButton.style.display = 'none';
+        stopRecordingButton.style.display = 'inline';
+        
+        mediaRecorder = new MediaRecorder(stream);
+        
+        mediaRecorder.ondataavailable = (event) => {
+          if (event.data && event.data.size > 0) {
+            recordedBlob = new Blob([event.data], { type: 'video/mp4' });
+          }
+        };
+        
+        mediaRecorder.start();
+        
+        console.log('Screen share started. Recording...');
+      }
+      
+      function handleError(error) {
+        console.error('Error starting screen share:', error);
+      }
+    </script>
+  </body>
+</html>
+    
+
+       
