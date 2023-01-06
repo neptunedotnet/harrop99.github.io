@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <title>XPVM - About me</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+	<link rel="icon" href="logo.png">
+
+    <style>
+      body {
+        background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
+        background-size: cover;
+      }
+      .window {
+        position: absolute;
+        top: 120;
+        left: 90;
+        width: 665px;
+        height: 490px;
+      }
+    </style>
+   <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
+<script>
+function websiteVisits(response) {
+    document.querySelector("#visits").textContent = response.value;
+}
+</script>
+  </head>
+</style>
+
+<!-- JavaScript to make the icon draggable and update the position of the blue square -->
+<script>
+  const icon = document.querySelector('.icon');
+  const square = document.querySelector('.square');
+  let isDragging = false;
+  let currentX;
+  let currentY;
+  let initialX;
+  let initialY;
+  let xOffset = 0;
+  let yOffset = 0;
+
+  icon.addEventListener("mousedown", dragStart);
+  icon.addEventListener("mouseup", dragEnd);
+  icon.addEventListener("mousemove", drag);
+  icon.addEventListener('click', function() {
+    square.style.display = 'block';  // show the square
+  });
+
+  document.body.addEventListener('click', function(event) {
+    if (event.target !== icon) {  // check that the user didn't click the icon again
+      square.style.display = 'none';  // hide the square
+    }
+  });
+
+  function dragStart(e) {
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+
+    if (e.target === icon) {
+      isDragging = true;
+    }
+  }
+
+  function dragEnd(e) {
+    initialX = currentX;
+    initialY = currentY;
+
+    isDragging = false;
+  }
+
+  function drag(e) {
+    if (isDragging) {
+      e.preventDefault();
+      currentX = e.clientX - initialX;
+      currentY = e.clientY - initialY;
+
+      xOffset = currentX;
+      yOffset = currentY;
+
+      setTranslate(currentX, currentY, icon);
+      setTranslate(currentX, currentY, square);  // update the position of the square
+    }
+  }
+
+  function setTranslate(xPos, yPos, el) {
+    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+  }
+</script>
+
+  <script src="script.js"></script>
+    <div class="window" style="width: 600px">
+      <div class="title-bar">
+        <div class="title-bar-text">XPVM</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+	  <section class="tabs" style="max-width: 600px">
+  <menu role="tablist" aria-label="Sample Tabs">
+    <button role="tab" aria-selected="true" aria-controls="tab-A">Basic Info</button>
+    <button role="tab" aria-controls="tab-B">My role in SG</button>
+    <button role="tab" aria-controls="tab-C">Other</button>
+  </menu>
+  <!-- the tab content -->
+  <article role="tabpanel" id="tab-A">
+    <h3>Basic Info</h3>
+    <h4><p>Hey! im <b>XPVM.</b></h4>
+
+    		 <p>i like to be called Ollie, or just XPVM.</p>
+			 <p>i LOVE Dead Rising, OMORI and Call of Duty: Infinite Warfare.</p>
+			 <p>i also enjoy going outside and just doing nothing, for some reason, and coding (except i cant code, and when i finally want to start coding i forget about the project in like 3 days)</p>
+			
+		 <p><b><i>I do Projects on xpvm.net, like these:</i></b></p>
+		  <br>
+          <a href="xpvm.net/gmodtoolgun"><button class="button">GMOD Tool Gun</button></a>
+		  <br>
+		  <a href="xpvm.net/faketube"><button class="button">Faketube (Youtube Singleplayer)</button></a>
+		  <p>━━━━━━</p>
+  </article>
+  <article role="tabpanel" hidden id="tab-B">
+	<h3>My role in SG is: "Event Lead"</h3>
+	<p>my plan is to do VR events. a few months ago, i started doing event leads with 3 other people, but at the time, barely anybody had a quest 2 or pc-vr. so now that christmas 2022 is behind us, i think that i should do vr events again.</p>
+  </article>
+  <article role="tabpanel" hidden id="tab-C">
+    <h3>Other notable infomation:</h3>
+    <p>im very intrested in betas of games, specifically DEAD RISINGS betas. such as the tgs demo, the E3 2006 demo and others.</p>
+	<p>i probably have the longest running group chat in SG U13. i dont know about the other servers though.</p>
+  </article>
+</section>
+  </body>
+</html>
