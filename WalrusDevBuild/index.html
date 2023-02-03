@@ -1,119 +1,82 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Walrus Racing</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <title>Walrus Racing - xpvm.net</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+	<link rel="icon" href="logo.png">
+
+    <style>
+      body {
+        background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
+        background-size: cover;
+      }
+      .window {
+        position: absolute;
+        top: 120;
+        left: 90;
+        width: 750px;
+        height: 490px;
+      }
+    </style>
+   <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
+<script>
+function websiteVisits(response) {
+    document.querySelector("#visits").textContent = response.value;
+}
+</script>
   </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+  <script src="script.js"></script>
+    <div class="window" style="width: 750px">
+      <div class="title-bar">
+        <div class="title-bar-text">xpvm.net</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
         </div>
       </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Walrus Racing</div>
-      </div>
-    </div>
+      <div class="window-body">
+	  <section class="tabs" style="max-width: 750px">
+  <menu role="tablist" aria-label="Sample Tabs">
+    <button role="tab" aria-selected="true" aria-controls="tab-A">Walrus Racing 64 and Download</button>
+  </menu>
+  <!-- the tab content -->
+  <article role="tabpanel" id="tab-A">
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=480 height=300 style="width: 710px; height: 400px; background: #828080"></canvas>
+    <script src="Build/WalrusDevBuild2.loader.js"></script>
     <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
-
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
-
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WalrusDevBuild.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/WalrusDevBuild.data",
-        frameworkUrl: buildUrl + "/WalrusDevBuild.framework.js",
-        codeUrl: buildUrl + "/WalrusDevBuild.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Walrus Racing",
-        productVersion: "5.0.1",
-        showBanner: unityShowBanner,
-      };
-
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
-
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        document.body.style.textAlign = "left";
       }
+      
 
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WalrusDevBuild2.data",
+        frameworkUrl: "Build/WalrusDevBuild2.framework.js",
+        codeUrl: "Build/WalrusDevBuild2.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Walrus Racing",
+        productVersion: "5.0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
     </script>
   </body>
+  </article>
+</section>
+  </body>
 </html>
+
