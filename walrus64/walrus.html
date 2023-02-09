@@ -43,11 +43,11 @@ function websiteVisits(response) {
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>walrus racing 64</title>
+    <title>Super Walrus 64! - xpvm.net</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=710 height=450 style="width: 710px; height: 450px; background: #231F20"></canvas>
-    <script src="Build/superwalrus64.loader.js"></script>
+    <script src="Build/walrus64.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -65,12 +65,12 @@ function websiteVisits(response) {
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/superwalrus64.data",
-        frameworkUrl: "Build/superwalrus64.framework.js",
-        codeUrl: "Build/superwalrus64.wasm",
+        dataUrl: "Build/walrus64.data",
+        frameworkUrl: "Build/walrus64.framework.js",
+        codeUrl: "Build/walrus64.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "XPVM",
-        productName: "Walrus Racing",
+        productName: "Super Walrus 64",
         productVersion: "5.0.1",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
