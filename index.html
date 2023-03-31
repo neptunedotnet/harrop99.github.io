@@ -3,7 +3,6 @@
     <title>xpvm.net</title>
     <link rel="stylesheet" href="https://unpkg.com/xp.css" />
 	<link rel="icon" href="logo.png">
-  <audio id="myaudio" src="https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q" autoplay></audio>
 
     <style>
       body {
@@ -112,7 +111,7 @@ function websiteVisits(response) {
   <script src="script.js"></script>
     <div class="window" style="width: 600px">
       <div class="title-bar">
-        <div class="title-bar-text">xpvm.net</div>
+        <div class="title-bar-text">xpvm.net Client</div>
         <div class="title-bar-controls">
           <button aria-label="Minimize"></button>
           <button aria-label="Maximize"></button>
@@ -123,20 +122,20 @@ function websiteVisits(response) {
 	  <section class="tabs" style="max-width: 600px">
   <menu role="tablist" aria-label="Sample Tabs">
     <button role="tab" aria-selected="true" aria-controls="tab-A">Homepage</button>
-    <button role="tab" aria-controls="tab-B">The Archive</button>
-    <button role="tab" aria-controls="tab-C">About the site</button>
-    <button role="tab" aria-controls="tab-D">News</button>
+    <button role="tab" aria-controls="tab-B">Radio</button>
+    <button role="tab" aria-controls="tab-C">The Archive</button>
+    <button role="tab" aria-controls="tab-D">About the site</button>
   </menu>
   <!-- the tab content -->
   <article role="tabpanel" id="tab-A">
     <h3>Home</h3>
     <p>This site has been visited <span id="visits"></span> times.<p>
 
-    		 <p><b>Welcome to XPVM.net! this is the homepage. Thanks for visiting (:</b></p>
+    		 <p><b>Welcome to xpvm.net! this is the homepage. Thanks for visiting (:</b></p>
 		 <p><b><i>Projects</i></b></p>
 		  <p>━━━━━━</p>
           <a href="https://xpvm.net/walrus64/walrus"><button class="button">Walrus Racing 64</button></a>
-          <a href="https://zeno.fm/radio/longhornradio/"><button class="button">Longhorn VM Radio</button></a>
+          <button role="tab" aria-controls="tab-B">Radio</button>
 		  <br>
 		  <a href="/faketube"><button class="button">Faketube (Youtube Singleplayer)</button></a>
 		  <p><b><i>News</i></b></p>
@@ -147,7 +146,7 @@ function websiteVisits(response) {
 		  <p><b>21/12/22</b></p>
 		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
   </article>
-  <article role="tabpanel" hidden id="tab-B">
+  <article role="tabpanel" hidden id="tab-C">
 	<h3>The Archive</h3>
 	<p><b>The Archive is where you can download stuff that i found!</b></p>
 	<a href="https://github.com/harrop99/xpvm.net-archive/raw/main/Fallout%204%20Map.png"><button class="button"> Fallout 4 Map</button></a>
@@ -155,18 +154,23 @@ function websiteVisits(response) {
 
 	
   </article>
-  <article role="tabpanel" hidden id="tab-C">
+  <article role="tabpanel" hidden id="tab-D">
     <h3>About this website</h3>
     <p>This website was made as a place to store all of my projects and stuff i liked. the original website was literally just xpvm.net/eagler, but grew as i made more projects! i hope you will stick around, as i love this website. thank you!</p>
-	
-  </article>
-  <article role="tabpanel" hidden id="tab-D">
+    
     <h3>News</h3>
     <p><b>23/12/22</b></p>
 		  <p>Added an icon you can drag around, although going too fast breaks it
 		  <br>
 		  <p><b>21/12/22</b></p>
-		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
+		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>	
+
+
+  </article>
+  <article role="tabpanel" hidden id="tab-B">
+    <h3>Radio</h3>
+    <p>xpvm.net RADIO</p>
+    <audio id="myaudio" src="https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q" controls></audio>
   </article>
 </section>
   </body>
