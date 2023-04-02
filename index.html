@@ -18,6 +18,7 @@
       }
     </style>
    <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
+   
 <script>
 function websiteVisits(response) {
     document.querySelector("#visits").textContent = response.value;
@@ -169,11 +170,30 @@ function websiteVisits(response) {
   </article>
   <article role="tabpanel" hidden id="tab-B">
     <h3>Winamp Radio</h3>
-    <p>Listen to my radio! i sometimes go live, but until i do, there are a few music tracks in rotation!</p>
+    <p>Listen to my radio! I sometimes go live, but until then, there are a few music tracks in rotation!</p>
     <br>
     <p>I am usually live on weekends, playing a selection of songs from video games!</p>
     <audio id="myaudio" src="https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q" controls></audio>
-  </article>
+    <div id="live-status"></div>
+    <script>
+      fetch('https://api.countapi.xyz/get/winampradio0/513547f8-6dc0-49a4-85ea-eebda45192dd')
+        .then(response => response.json())
+        .then(data => {
+          const liveStatus = document.getElementById('live-status');
+          if (data.value === 1) {
+            liveStatus.textContent = '🔴 I am Currently LIVE';
+          } else {
+            liveStatus.textContent = '⚫ I am not live right now. Please check back later.';
+          }
+        });
+    </script>
+  </article>  
+  <style>
+    #live-status {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </section>
   </body>
 </html>
