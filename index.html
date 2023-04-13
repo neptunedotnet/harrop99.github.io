@@ -37,78 +37,34 @@ function websiteVisits(response) {
     width: 70px;
     height: 70px;
   }
-
-  .square {
-    position: absolute;
-    top: 0;
-    left: -7;
-    width: 5%;
-    height: 8%;
-    background-color: blue;
-    opacity: 0.25;
-    display: none;  /* hide the square initially */
-  }
 </style>
+<body>
+  <div id="app" style="height: 75vh">
+      <!-- Webamp will attempt to center itself within this div -->
+  </div>
+  <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+  <script>
+      const Webamp = window.Webamp;
+      const webamp = new Webamp({
+          initialTracks: [
+              {
+                  metaData: {
+                      artist: "xpvm.net",
+                      title: "Winamp Radio"
+                  },
+                  // NOTE: Your audio file must be served from the same domain as your HTML
+                  // file, or served with permissive CORS HTTP headers:
+                  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                  url: "https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q",
+                  duration: 1
+              },
+          ],
+      });
 
-<!-- JavaScript to make the icon draggable and update the position of the blue square -->
-<script>
-  const icon = document.querySelector('.icon');
-  const square = document.querySelector('.square');
-  let isDragging = false;
-  let currentX;
-  let currentY;
-  let initialX;
-  let initialY;
-  let xOffset = 0;
-  let yOffset = 0;
-
-  icon.addEventListener("mousedown", dragStart);
-  icon.addEventListener("mouseup", dragEnd);
-  icon.addEventListener("mousemove", drag);
-  icon.addEventListener('click', function() {
-    square.style.display = 'block';  // show the square
-  });
-
-  document.body.addEventListener('click', function(event) {
-    if (event.target !== icon) {  // check that the user didn't click the icon again
-      square.style.display = 'none';  // hide the square
-    }
-  });
-
-  function dragStart(e) {
-    initialX = e.clientX - xOffset;
-    initialY = e.clientY - yOffset;
-
-    if (e.target === icon) {
-      isDragging = true;
-    }
-  }
-
-  function dragEnd(e) {
-    initialX = currentX;
-    initialY = currentY;
-
-    isDragging = false;
-  }
-
-  function drag(e) {
-    if (isDragging) {
-      e.preventDefault();
-      currentX = e.clientX - initialX;
-      currentY = e.clientY - initialY;
-
-      xOffset = currentX;
-      yOffset = currentY;
-
-      setTranslate(currentX, currentY, icon);
-      setTranslate(currentX, currentY, square);  // update the position of the square
-    }
-  }
-
-  function setTranslate(xPos, yPos, el) {
-    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-  }
-</script>
+      // Returns a promise indicating when it's done loading.
+      webamp.renderWhenReady(document.getElementById('app'));
+  </script>
+</body>
   <script src="script.js"></script>
     <div class="window" style="width: 600px">
       <div class="title-bar">
@@ -136,7 +92,6 @@ function websiteVisits(response) {
 		 <p><b><i>Projects</i></b></p>
 		  <p>━━━━━━</p>
           <a href="https://xpvm.net/walrus64/walrus"><button class="button">Walrus Racing 64</button></a>
-          <button role="tab" aria-controls="tab-B">Radio</button>
 		  <br>
 		  <a href="/faketube"><button class="button">Faketube (Youtube Singleplayer)</button></a>
 		  <p><b><i>News</i></b></p>
@@ -150,14 +105,14 @@ function websiteVisits(response) {
   <article role="tabpanel" hidden id="tab-C">
 	<h3>The Archive</h3>
 	<p><b>The Archive is where you can download stuff that i found!</b></p>
-	<a href="https://github.com/harrop99/xpvm.net-archive/raw/main/Fallout%204%20Map.png"><button class="button"> Fallout 4 Map</button></a>
+	<a href="https://github.com/harrop99/xpvm.net-archive/raw/main/Fallout%204%20Map.png"><button class="button">Fallout 4 Map.png</button></a>
   <a href="https://docs.google.com/uc?export=download&id=1SgC99IxHz1JOYV7hJfrx3HehDLDkcGiH"><button class="button">Super Mario 64 (USA)</button></a>
 
 	
   </article>
   <article role="tabpanel" hidden id="tab-D">
     <h3>About this website</h3>
-    <p>This website was made as a place to store all of my projects and stuff i liked. the original website was literally just xpvm.net/eagler, but grew as i made more projects! i hope you will stick around, as i love this website. thank you!</p>
+    <p>This website was made as a place to store all of my projects and stuff i liked. the original website was literally just minecraft, but grew as i made more projects! i hope you will stick around, as i update the website often. thank you!</p>
     
     <h3>News</h3>
     <p><b>2/4/23</b></p>
@@ -169,13 +124,13 @@ function websiteVisits(response) {
 		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>	
 
 
+
   </article>
   <article role="tabpanel" hidden id="tab-B">
     <h3>Winamp Radio</h3>
     <p>Listen to my radio! I sometimes go live, but until then, there are a few music tracks in rotation!</p>
     <br>
     <p>I am usually live on weekends, playing a selection of songs from video games!</p>
-    <audio id="myaudio" src="https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q" controls></audio>
     <div id="live-status"></div>
     <script>
       fetch('https://api.countapi.xyz/get/winampradio0/513547f8-6dc0-49a4-85ea-eebda45192dd')
@@ -185,7 +140,7 @@ function websiteVisits(response) {
           if (data.value === 1) {
             liveStatus.textContent = '🔴 I am Currently LIVE';
           } else {
-            liveStatus.textContent = '⚫ I am not live right now. Please check back later.';
+            liveStatus.textContent = '◯  I am not live right now. Please check back later.';
           }
         });
     </script>
