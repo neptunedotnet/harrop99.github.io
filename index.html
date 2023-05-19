@@ -5,70 +5,75 @@
 	<link rel="icon" href="logo.png">
 
     <style>
-      body {
-        background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
-        background-size: cover;
-      }
+body {
+    background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), 
+                      url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
       .window {
         position: absolute;
         top: 120;
-        left: 90;
-        width: 665px;
-        height: 490px;
+        left: 100;
+        width: 700px;
+        height: 700px;
       }
+
+      .pfp {
+  border: 5px solid #ffaa00;
+  }
+
+  .home {
+    border: 5px solid #3ca1ff;
+    width: 150px;
+    height: 70px;
+  }
+
     </style>
    <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
+
+  </head>
+  <body>
+    <div id="app" style="height: 75vh">
+        <!-- Webamp will attempt to center itself within this div -->
+    </div>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+    <script>
+        const Webamp = window.Webamp;
+        const webamp = new Webamp({
+            initialTracks: [
+                {
+                    metaData: {
+                        artist: "xpvm.net",
+                        title: "Winamp Radio"
+                    },
+                    // NOTE: Your audio file must be served from the same domain as your HTML
+                    // file, or served with permissive CORS HTTP headers:
+                    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                    url: "https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q",
+                    duration: -1
+                },
+            ],
+        });
+  
+        // Returns a promise indicating when it's done loading.
+        webamp.renderWhenReady(document.getElementById('app'));
+    </script>
+  </body>
    
 <script>
 function websiteVisits(response) {
     document.querySelector("#visits").textContent = response.value;
 }
 </script>
-  </head>
   
 <body>
-<!-- HTML for the icon and the blue square -->
-<img src="icon.png" alt="My Icon" class="icon">
-<div class="square"></div>
-
-<!-- CSS to style the icon and the blue square -->
-<style>
-  .icon {
-    width: 70px;
-    height: 70px;
-  }
-</style>
-<body>
-  <div id="app" style="height: 75vh">
-      <!-- Webamp will attempt to center itself within this div -->
-  </div>
-  <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
-  <script>
-      const Webamp = window.Webamp;
-      const webamp = new Webamp({
-          initialTracks: [
-              {
-                  metaData: {
-                      artist: "xpvm.net",
-                      title: "Winamp Radio"
-                  },
-                  // NOTE: Your audio file must be served from the same domain as your HTML
-                  // file, or served with permissive CORS HTTP headers:
-                  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-                  url: "https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q",
-                  duration: 1
-              },
-          ],
-      });
-
-      // Returns a promise indicating when it's done loading.
-      webamp.renderWhenReady(document.getElementById('app'));
-  </script>
-</body>
   <script src="script.js"></script>
-    <div class="window" style="width: 600px">
+    <div class="window" style="width: 700px">
       <div class="title-bar">
-        <div class="title-bar-text">xpvm.net Client</div>
+        <div class="title-bar-text">xpvm.net</div>
         <div class="title-bar-controls">
           <button aria-label="Minimize"></button>
           <button aria-label="Maximize"></button>
@@ -76,20 +81,34 @@ function websiteVisits(response) {
         </div>
       </div>
       <div class="window-body">
-	  <section class="tabs" style="max-width: 600px">
+	  <section class="tabs" style="max-width: 700px">
   <menu role="tablist" aria-label="Sample Tabs">
-    <button role="tab" aria-selected="true" aria-controls="tab-A">Homepage</button>
-    <button role="tab" aria-controls="tab-B">Radio</button>
-    <button role="tab" aria-controls="tab-C">The Archive</button>
-    <button role="tab" aria-controls="tab-D">About the site</button>
+    <button role="tab" aria-selected="true" aria-controls="tab-A">★ Homepage ★</button>
+    <button role="tab" aria-controls="tab-B">★ Radio ★</button>
+    <button role="tab" aria-controls="tab-C">★ Archive ★</button>
+    <button role="tab" aria-controls="tab-D">★ About the site ★</button>
   </menu>
   <!-- the tab content -->
   <article role="tabpanel" id="tab-A">
-    <h3>Home</h3>
+    <div class="home">
+      <img style="vertical-align:middle;" src="PSHome_Icon.svg.png" width="65px" height="70px">
+    <span style="font-size: 230%;color: #3ca1ff;"><b>Home</b></span>
+    </div>
     <p>This site has been visited <span id="visits"></span> times.<p>
 
-    		 <p><b>Welcome to xpvm.net! this is the homepage. Thanks for visiting (:</b></p>
-		 <p><b><i>Projects</i></b></p>
+     <div>
+      <img class="pfp" style="vertical-align:middle" src="f3c063300d3118e400bed6fb8eeb6f99.jpg" width="65px" height="65px">
+      <span style="font-size: 140%;"><b>yo! im <span style="color:rgb(255, 145, 0)">XPVM</span>/<span style="color:rgb(0, 162, 255)">Longhorn.</span> this is my website where i do random things. :D<b></span>
+        <img style="vertical-align: middle;" src="https://media.tenor.com/pXEDrZV2s4QAAAAi/star-spinning.gif" width="25px" height="25px">
+      </div> 
+
+    
+  <div>
+    <br>
+    <span style="color:rgb(255, 145, 0);font-size: 125%;"><u>★ Message Board! ★</u></span>
+    <p>CountAPI broke so dont expect to know when im live or how many people have visited until i find an alternative to CountAPI d: <span style="color:rgb(0, 162, 255)"><b>- Longhorn</b></span></p>
+
+    <p><b><i>★ Other Projects ★</i></b></p>
 		  <p>━━━━━━</p>
           <a href="https://xpvm.net/walrus64/walrus"><button class="button">Walrus Racing 64</button></a>
 		  <br>
@@ -103,7 +122,7 @@ function websiteVisits(response) {
 		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
   </article>
   <article role="tabpanel" hidden id="tab-C">
-	<h3>The Archive</h3>
+	<h3>Archive</h3>
 	<p><b>The Archive is where you can download stuff that i found!</b></p>
 	<a href="https://github.com/harrop99/xpvm.net-archive/raw/main/Fallout%204%20Map.png"><button class="button">Fallout 4 Map.png</button></a>
   <a href="https://docs.google.com/uc?export=download&id=1SgC99IxHz1JOYV7hJfrx3HehDLDkcGiH"><button class="button">Super Mario 64 (USA)</button></a>
@@ -143,7 +162,8 @@ function websiteVisits(response) {
           }
         });
     </script>
-  </article>  
+  </article> 
+  
   <style>
     #live-status {
       font-size: 24px;
