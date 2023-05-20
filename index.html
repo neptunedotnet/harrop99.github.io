@@ -3,7 +3,7 @@
     <title>xpvm.net</title>
     <link rel="stylesheet" href="https://unpkg.com/xp.css" />
 	<link rel="icon" href="logo.png">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
 body {
     background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), 
@@ -30,6 +30,15 @@ body {
     width: 150px;
     height: 70px;
   }
+
+  @media (max-width: 767px) {
+    body {
+        background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
+        background-size: cover;
+      }
+}
+
+  
 
     </style>
    <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
@@ -90,11 +99,6 @@ function websiteVisits(response) {
   </menu>
   <!-- the tab content -->
   <article role="tabpanel" id="tab-A">
-    <div class="home">
-      <img style="vertical-align:middle;" src="PSHome_Icon.svg.png" width="65px" height="70px">
-    <span style="font-size: 230%;color: #3ca1ff;"><b>Home</b></span>
-    </div>
-    <p>This site has been visited <span id="visits"></span> times.<p>
 
      <div>
       <img class="pfp" style="vertical-align:middle" src="f3c063300d3118e400bed6fb8eeb6f99.jpg" width="65px" height="65px">
@@ -120,6 +124,7 @@ function websiteVisits(response) {
 		  <br>
 		  <p><b>21/12/22</b></p>
 		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
+      <!--<p>This site has been visited <span id="visits"></span> times.<p>-->
   </article>
   <article role="tabpanel" hidden id="tab-C">
 	<h3>Archive</h3>
@@ -150,7 +155,7 @@ function websiteVisits(response) {
     <br>
     <p>I am usually live on weekends, playing a selection of songs from video games!</p>
     <div id="live-status"></div>
-    <script>
+   <!--<script>
       fetch('https://api.countapi.xyz/get/winampradio0/513547f8-6dc0-49a4-85ea-eebda45192dd')
         .then(response => response.json())
         .then(data => {
@@ -161,7 +166,7 @@ function websiteVisits(response) {
             liveStatus.textContent = '◯  I am not live right now. Please check back later.';
           }
         });
-    </script>
+    </script>-->
   </article> 
   
   <style>
