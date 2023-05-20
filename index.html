@@ -35,8 +35,17 @@ body {
     body {
         background-image: url("https://raw.githubusercontent.com/harrop99/harrop99.github.io/main/Desktop.png"), url("https://images.hdqwalls.com/wallpapers/windows-xp-bliss-4k-lu.jpg");
         background-size: cover;
-      }
+      }        
 }
+
+@media (max-width: 767px) {
+        .webamp {
+          top: 30;
+          left: 100;
+          
+        }
+
+      }
 
   
 
@@ -45,7 +54,7 @@ body {
 
   </head>
   <body>
-    <div id="app" style="height: 75vh">
+    <div class="webamp" id="app" style="height: 75vh">
         <!-- Webamp will attempt to center itself within this div -->
     </div>
     <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
@@ -95,14 +104,14 @@ function websiteVisits(response) {
     <button role="tab" aria-selected="true" aria-controls="tab-A">★ Homepage ★</button>
     <button role="tab" aria-controls="tab-B">★ Radio ★</button>
     <button role="tab" aria-controls="tab-C">★ Archive ★</button>
-    <button role="tab" aria-controls="tab-D">★ About the site ★</button>
+    <button role="tab" aria-controls="tab-D">★ Message Board ★</button>
   </menu>
   <!-- the tab content -->
   <article role="tabpanel" id="tab-A">
 
      <div>
       <img class="pfp" style="vertical-align:middle" src="f3c063300d3118e400bed6fb8eeb6f99.jpg" width="65px" height="65px">
-      <span style="font-size: 140%;"><b>yo! im <span style="color:rgb(255, 145, 0)">XPVM</span>/<span style="color:rgb(0, 162, 255)">Longhorn.</span> this is my website where i do random things. :D<b></span>
+      <span style="font-size: 140%;"><b>yo! im <span style="color:rgb(255, 145, 0)">XPVM</span>/<span style="color:rgb(0, 162, 255)">Longhorn.</span> welcome to xpvm.net. have a good day! :D<b></span>
         <img style="vertical-align: middle;" src="https://media.tenor.com/pXEDrZV2s4QAAAAi/star-spinning.gif" width="25px" height="25px">
       </div> 
 
@@ -110,6 +119,8 @@ function websiteVisits(response) {
   <div>
     <br>
     <span style="color:rgb(255, 145, 0);font-size: 125%;"><u>★ Message Board! ★</u></span>
+    <p>i forgot to optimise my website for mobile users, should be mostly fixed, although webamp is still broken so i have put a audio src in the radio tab... <span style="color:rgb(0, 162, 255)"><b>- Longhorn</b></span></p>
+
     <p>CountAPI broke so dont expect to know when im live or how many people have visited until i find an alternative to CountAPI d: <span style="color:rgb(0, 162, 255)"><b>- Longhorn</b></span></p>
 
     <p><b><i>★ Other Projects ★</i></b></p>
@@ -134,26 +145,18 @@ function websiteVisits(response) {
 	<a href="https://github.com/harrop99/xpvm.net-archive/raw/main/WalrusGunnerMoonlight.zip"><button class="button">Walrus Gunner Moonlight</button></a>
   </article>
   <article role="tabpanel" hidden id="tab-D">
-    <h3>About this website</h3>
-    <p>This website was made as a place to store all of my projects and stuff i liked. the original website was literally just minecraft, but grew as i made more projects! i hope you will stick around, as i update the website often. thank you!</p>
-    
-    <h3>News</h3>
-    <p><b>2/4/23</b></p>
-      <p>Added Radio Tab (Winamp Radio)</p>
-    <p><b>23/12/22</b></p>
-		  <p>Added an icon you can drag around, although going too fast breaks it
-		  <br>
-		  <p><b>21/12/22</b></p>
-		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>	
+    <span style="color:rgb(255, 145, 0);font-size: 250%;">★ Message Board! ★</span>
+    <p></p>
+    <p>i forgot to optimise my website for mobile users, should be mostly fixed, although webamp is still broken so i have put a audio src in the radio tab... <span style="color:rgb(0, 162, 255)"><b>- Longhorn 20/05/23</b></span></p>
 
-
-
+    <p>CountAPI broke so dont expect to know when im live or how many people have visited until i find an alternative to CountAPI d: <span style="color:rgb(0, 162, 255)"><b>- Longhorn 19/05/23</b></span></p>
   </article>
   <article role="tabpanel" hidden id="tab-B">
     <h3>Winamp Radio</h3>
     <p>Listen to my radio! I sometimes go live, but until then, there are a few music tracks in rotation!</p>
     <br>
     <p>I am usually live on weekends, playing a selection of songs from video games!</p>
+    <audio src="https://stream-43.zeno.fm/s8sekqdhiqzvv?zs=qkqLEwX7Tp272y-ygJyh6Q" controls>
     <div id="live-status"></div>
    <!--<script>
       fetch('https://api.countapi.xyz/get/winampradio0/513547f8-6dc0-49a4-85ea-eebda45192dd')
@@ -168,6 +171,7 @@ function websiteVisits(response) {
         });
     </script>-->
   </article> 
+
   
   <style>
     #live-status {
