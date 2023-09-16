@@ -87,46 +87,63 @@ function websiteVisits(response) {
 }
 </script>
 
-<script>
-  // Array of image URLs
-  const imageUrls = [
-    "https://www.xpvm.net/ads/onceinamillion.png",
-    "https://www.xpvm.net/ads/Ziggy.png",
-    "https://www.xpvm.net/ads/xpvmnet.png",
-    "https://www.xpvm.net/ads/transrights.png",
-    "ads/Toasters.png",
-    "ads/xpvmnet2.png",
-    "ads/downgrade.png",
-    "ads/downgrade2.png",
+<html>
+<head>
+  <!-- Your existing head content -->
+</head>
+<body>
+  <!-- Your existing HTML content -->
 
+  <img class="ad1" src="" style="display: none;"> <!-- Hidden image for preloading -->
+  <img class="ad2" src="" style="display: none;"> <!-- Hidden image for preloading -->
 
-    // Add more image URLs here if needed
-  ];
+  <script>
+    // Updated array of image URLs
+    const imageUrls = [
+      "https://www.xpvm.net/ads/onceinamillion.png",
+      "https://www.xpvm.net/ads/Ziggy.png",
+      "https://www.xpvm.net/ads/xpvmnet.png",
+      "https://www.xpvm.net/ads/transrights.png",
+      "https://www.xpvm.net/ads/Toasters.png",
+      "https://www.xpvm.net/ads/xpvmnet2.png",
+      "https://www.xpvm.net/ads/downgrade.png",
+      "https://www.xpvm.net/ads/downgrade2.png",
+      // Add more image URLs here if needed
+    ];
 
-  // Function to select a random image URL from the array
-  function getRandomImageUrl() {
-    const randomIndex = Math.floor(Math.random() * imageUrls.length);
-    return imageUrls[randomIndex];
-  }
+    // Function to select a random image URL from the array
+    function getRandomImageUrl() {
+      const randomIndex = Math.floor(Math.random() * imageUrls.length);
+      return imageUrls[randomIndex];
+    }
 
-  // Set random image sources when the page loads
-  window.addEventListener('load', function() {
-    const image1 = document.querySelector('#tab-A .ad1');
-    const image2 = document.querySelector('#tab-A .ad2');
+    // Preload the images
+    const ad1Image = new Image();
+    const ad2Image = new Image();
     
-    let randomIndex1, randomIndex2;
-
     // Generate two distinct random indices
+    let randomIndex1, randomIndex2;
     do {
       randomIndex1 = Math.floor(Math.random() * imageUrls.length);
       randomIndex2 = Math.floor(Math.random() * imageUrls.length);
     } while (randomIndex1 === randomIndex2);
 
-    // Set image sources using the generated indices
-    image1.src = imageUrls[randomIndex1];
-    image2.src = imageUrls[randomIndex2];
-  });
-</script>
+    ad1Image.src = imageUrls[randomIndex1];
+    ad2Image.src = imageUrls[randomIndex2];
+
+    // Set random image sources when the page loads
+    window.addEventListener('load', function() {
+      const image1 = document.querySelector('#tab-A .ad1');
+      const image2 = document.querySelector('#tab-A .ad2');
+      
+      // Set image sources using the preloaded images
+      image1.src = ad1Image.src;
+      image2.src = ad2Image.src;
+    });
+  </script>
+</body>
+</html>
+
 
   
 <body>
