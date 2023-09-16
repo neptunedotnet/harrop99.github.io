@@ -50,7 +50,7 @@ body {
   
 
     </style>
-   <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script>
+   <!-- <script async src="https://api.countapi.xyz/hit/xpvm.net/4d88ebd4-5641-46b2-b18a-93239aaa0b28?callback=websiteVisits"></script> -->
 
   </head>
   <body>
@@ -86,6 +86,41 @@ function websiteVisits(response) {
     document.querySelector("#visits").textContent = response.value;
 }
 </script>
+
+<script>
+  // Array of image URLs
+  const imageUrls = [
+    "https://www.xpvm.net/ads/onceinamillion.png",
+    "https://www.xpvm.net/ads/Ziggy.png",
+    "https://www.xpvm.net/ads/xpvmnet.png",
+    // Add more image URLs here if needed
+  ];
+
+  // Function to select a random image URL from the array
+  function getRandomImageUrl() {
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    return imageUrls[randomIndex];
+  }
+
+  // Set random image sources when the page loads
+  window.addEventListener('load', function() {
+    const image1 = document.querySelector('#tab-A .ad1');
+    const image2 = document.querySelector('#tab-A .ad2');
+    
+    let randomIndex1, randomIndex2;
+
+    // Generate two distinct random indices
+    do {
+      randomIndex1 = Math.floor(Math.random() * imageUrls.length);
+      randomIndex2 = Math.floor(Math.random() * imageUrls.length);
+    } while (randomIndex1 === randomIndex2);
+
+    // Set image sources using the generated indices
+    image1.src = imageUrls[randomIndex1];
+    image2.src = imageUrls[randomIndex2];
+  });
+</script>
+
   
 <body>
   <script src="script.js"></script>
@@ -136,6 +171,8 @@ function websiteVisits(response) {
 		  <p><b>21/12/22</b></p>
 		  <p>Redesigned Home page! (there is a taskbar, you need to go into full screen)</p>
       <!--<p>This site has been visited <span id="visits"></span> times.<p>-->
+        <img class="ad1" src="https://www.xpvm.net/ads/onceinamillion.png"></img>
+        <img class="ad2" src="https://www.xpvm.net/ads/Ziggy.png"></img>
   </article>
   <article role="tabpanel" hidden id="tab-C">
 	<h3>Archive</h3>
@@ -154,6 +191,7 @@ function websiteVisits(response) {
     <p>i forgot to optimise my website for mobile users, should be mostly fixed, although webamp is still broken so i have put a audio src in the radio tab... <span style="color:rgb(0, 162, 255)"><b>- Longhorn 20/05/23</b></span></p>
 
     <p>CountAPI broke so dont expect to know when im live or how many people have visited until i find an alternative to CountAPI d: <span style="color:rgb(0, 162, 255)"><b>- Longhorn 19/05/23</b></span></p>
+  
   </article>
   <article role="tabpanel" hidden id="tab-B">
     <h3>Winamp Radio</h3>
